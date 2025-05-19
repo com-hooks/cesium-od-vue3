@@ -7,22 +7,22 @@
 </template>
 
 <script lang="ts" setup>
-// import {
-//     CesiumViewer,
-//     OdLine,
-//     LayerMask,
-//     type OdLineProps,
-//     type LayerMaskHoleRecord,
-//     type ViewerHandlerEmitType,
-// } from "cesium-od-vue3";
 import {
     CesiumViewer,
     OdLine,
     LayerMask,
+    type OdLineProps,
     type LayerMaskHoleRecord,
     type ViewerHandlerEmitType,
-    type OdLineProps,
-} from "./packages";
+} from "cesium-od-vue3";
+// import {
+//     CesiumViewer,
+//     OdLine,
+//     LayerMask,
+//     type LayerMaskHoleRecord,
+//     type ViewerHandlerEmitType,
+//     type OdLineProps,
+// } from "./packages";
 import { computed, ref, useTemplateRef, watchPostEffect } from "vue";
 const show = ref(true);
 const odLineRefs = useTemplateRef("odLineRef");

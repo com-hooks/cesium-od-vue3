@@ -35,6 +35,9 @@ if (!viewerRef?.value) {
 }
 const viewer: Cesium.Viewer = viewerRef.value;
 let layerMaskEntiy = shallowRef<Cesium.Entity>();
+const maskColorMaterial = new Cesium.ColorMaterialProperty(
+  Cesium.Color.fromCssColorString(maskColor),
+);
 const holeLineDataSource = new Cesium.CustomDataSource("holeLines");
 viewer.dataSources.add(holeLineDataSource);
 function toCesiumHoles(holesData: LayerMaskHoleRecord[]): Cesium.PolygonHierarchy[] {
@@ -83,7 +86,7 @@ function updateLayerMask() {
             holes: holesData,
           },
           // 填充多边形的材质
-          material: Cesium.Color.fromCssColorString(maskColor),
+          material: maskColorMaterial,
           height: 0,
           extrudedHeight: 0,
           outline: false,

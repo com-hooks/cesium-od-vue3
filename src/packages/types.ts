@@ -38,6 +38,10 @@ export type OdLineProps = {
      */
     width?: number;
     /**
+    * @default 0.5
+    */
+    pointAlpha?: number;
+    /**
      * 插值
      * @default 100
      */

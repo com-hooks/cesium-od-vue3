@@ -26,6 +26,7 @@ const props = withDefaults(defineProps<OdLineProps>(), {
 	animate: true,
 	startEllipseSize: 18000,
 	startEllipseScaleStep: 0.02,
+	pointAlpha: 0.5,
 	tail: () => ({
 		...tailDefaultOptions,
 	}),
@@ -61,8 +62,9 @@ let odLineEntity: Cesium.Entity;
 let flyOdLineEntity: Cesium.Entity;
 let progress = ref(0);
 let scale = ref(0);
-
-const themeColor = Cesium.Color.fromCssColorString(props.color).withAlpha(0.5);
+const themeColor = new Cesium.ColorMaterialProperty(
+	Cesium.Color.fromCssColorString(props.color).withAlpha(props.pointAlpha),
+);
 // 创建OD线
 odLineEntity = viewer.entities.add(
 	useCreateOdLineOptions(

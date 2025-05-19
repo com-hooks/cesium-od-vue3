@@ -23,6 +23,7 @@ declare const _default: import('vue').DefineComponent<OdLineProps, {
     focus: boolean;
     animate: boolean;
     color: string;
+    pointAlpha: number;
     interpolation: number;
     sagitta: number;
     midT: number;

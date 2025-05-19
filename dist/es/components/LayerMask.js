@@ -1,8 +1,8 @@
-import { defineComponent as C, inject as g, shallowRef as p, watch as k, onUnmounted as v } from "vue";
-import * as n from "cesium";
+import { defineComponent as p, inject as g, shallowRef as k, watch as v, onUnmounted as w } from "vue";
+import * as a from "cesium";
 import { cesiumViewerInjectKey as B, holesDefaultBorderOptions as D } from "../share/component.js";
 import { merge as h } from "lodash-es";
-const S = /* @__PURE__ */ C({
+const S = /* @__PURE__ */ p({
   __name: "LayerMask",
   props: {
     holes: { default: () => [] },
@@ -14,27 +14,29 @@ const S = /* @__PURE__ */ C({
     showHoleBorder: { type: Boolean, default: !0 },
     holesBorderOptions: { default: () => ({}) }
   },
-  setup(o, { expose: y }) {
+  setup(o, { expose: C }) {
     const s = g(B);
     if (!(s != null && s.value))
       throw TypeError("viewer inject error!");
     const t = s.value;
-    let l = p();
-    const a = new n.CustomDataSource("holeLines");
-    t.dataSources.add(a);
+    let l = k();
+    const y = new a.ColorMaterialProperty(
+      a.Color.fromCssColorString(o.maskColor)
+    ), n = new a.CustomDataSource("holeLines");
+    t.dataSources.add(n);
     function u(r) {
       return r.map((e) => ({
-        positions: n.Cartesian3.fromDegreesArray(e.positions.flat()),
+        positions: a.Cartesian3.fromDegreesArray(e.positions.flat()),
         holes: u((e == null ? void 0 : e.holes) ?? [])
       }));
     }
     function d(r) {
       r.forEach((e) => {
-        a.entities.add(h(
+        n.entities.add(h(
           {
             polyline: {
               positions: e.positions,
-              material: n.Color.fromCssColorString(o.holeLineColor)
+              material: a.Color.fromCssColorString(o.holeLineColor)
             }
           },
           D,
@@ -43,10 +45,10 @@ const S = /* @__PURE__ */ C({
       });
     }
     function f() {
-      a.entities.removeAll();
+      n.entities.removeAll();
     }
     function i() {
-      const r = n.Cartesian3.fromDegreesArray(
+      const r = a.Cartesian3.fromDegreesArray(
         o.maskRange.flat()
       ), e = u(o.holes);
       o.showHoleBorder && d(e), l.value = t.entities.add(
@@ -61,7 +63,7 @@ const S = /* @__PURE__ */ C({
                 holes: e
               },
               // 填充多边形的材质
-              material: n.Color.fromCssColorString(o.maskColor),
+              material: y,
               height: 0,
               extrudedHeight: 0,
               outline: !1
@@ -73,12 +75,12 @@ const S = /* @__PURE__ */ C({
     }
     i();
     function c() {
-      !t || t != null && t.isDestroyed() || (m(), t.dataSources.remove(a));
+      !t || t != null && t.isDestroyed() || (m(), t.dataSources.remove(n));
     }
     function m() {
       l.value && t.entities.remove(l.value);
     }
-    return k(
+    return v(
       () => o.holes,
       () => {
         m(), f(), i();
@@ -86,11 +88,11 @@ const S = /* @__PURE__ */ C({
       {
         deep: !0
       }
-    ), v(() => {
+    ), w(() => {
       c();
-    }), y({
+    }), C({
       layerMaskEntiy: l,
-      holeLineDataSource: a,
+      holeLineDataSource: n,
       clearHoleBorder: f,
       destoryEntity: c,
       updateLayerMask: i
