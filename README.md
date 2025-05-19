@@ -7,6 +7,8 @@ pnpm add cesium-od-vue3
 
 - vite 自行配置 `vite-plugin-cesium`
 
+- ![微信截图_20250519154332](https://github.com/user-attachments/assets/1351c76e-9a40-4791-a38d-4f5b3c11e7a2)
+
 ## Example
 ```vue
 <template>
