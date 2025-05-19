@@ -1,0 +1,38 @@
+import { EntityOptions, OdLineProps, TailOptions } from '../types';
+import * as Cesium from "cesium";
+declare function updateFlyLinePos(pos: any): void;
+declare function bindTickAnimate(): void;
+declare function unBindTickAnimate(): void;
+declare function focusEntities(): void;
+declare function destoryEntity(): void;
+declare const _default: import('vue').DefineComponent<OdLineProps, {
+    progress: import('vue').Ref<number, number>;
+    scale: import('vue').Ref<number, number>;
+    odLineEntity: Cesium.Entity;
+    flyOdLineEntity: Cesium.Entity;
+    startPointEntity: Cesium.Entity;
+    endPointEntity: Cesium.Entity;
+    updateFlyLinePos: typeof updateFlyLinePos;
+    focusEntities: typeof focusEntities;
+    destoryEntity: typeof destoryEntity;
+    bindTickAnimate: typeof bindTickAnimate;
+    unBindTickAnimate: typeof unBindTickAnimate;
+}, {}, {}, {}, import('vue').ComponentOptionsMixin, import('vue').ComponentOptionsMixin, {}, string, import('vue').PublicProps, Readonly<OdLineProps> & Readonly<{}>, {
+    show: boolean;
+    width: number;
+    focus: boolean;
+    animate: boolean;
+    color: string;
+    interpolation: number;
+    sagitta: number;
+    midT: number;
+    odName: string;
+    tail: TailOptions;
+    odLineOptions: EntityOptions;
+    odFlyLineOptions: EntityOptions;
+    startPointOptions: EntityOptions;
+    endPointOptions: EntityOptions;
+    startEllipseSize: number;
+    startEllipseScaleStep: number;
+}, {}, {}, {}, string, import('vue').ComponentProvideOptions, false, {}, any>;
+export default _default;

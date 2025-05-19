@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,Symbol.toStringTag,{value:"Module"});const e={width:15,color:"#00FAA4",glowPower:.2,taperPower:.5},t=e,o={polyline:{width:2,clampToGround:!0}},i=Symbol("CesiumViewer");exports._tailOptions=t;exports.cesiumViewerInjectKey=i;exports.holesDefaultBorderOptions=o;exports.tailDefaultOptions=e;
