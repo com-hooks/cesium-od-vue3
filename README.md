@@ -9,6 +9,18 @@ pnpm add cesium-od-vue3
 
 - ![微信截图_20250519154332](https://github.com/user-attachments/assets/1351c76e-9a40-4791-a38d-4f5b3c11e7a2)
 
+## Custom Component Inject Viewer
+```vue
+<script lang="ts" setup>
+import { cesiumViewerInjectKey} from 'cesium-od-vue3';
+const viewerRef = inject(cesiumViewerInjectKey);
+if (!viewerRef?.value) {
+	throw TypeError("viewer inject error!");
+}
+const viewer: Cesium.Viewer = viewerRef.value;
+</script>
+```
+
 ## Example
 ```vue
 <template>
